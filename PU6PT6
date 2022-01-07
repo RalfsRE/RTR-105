@@ -21,8 +21,8 @@ int arg_return(int arg1, char arg2, char * arg3)
 }
 int main()
 {
-    no_arg_no_return();
+    arg_return(1, 2, NULL);
     arg_no_return(1, 2, NULL);
     no_arg_return();
-    arg_return(1, 2, NULL);
+    no_arg_no_return();
 }
