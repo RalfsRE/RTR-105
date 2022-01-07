@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int main()
+{
+  int n1, n2, n3;
+  
+ 
+  printf("Ievadiet tris skaitlus: ");
+  scanf("%d %d %d", &n1, &n2, &n3);
+  
+  
+  int mazakais, videjais, lielakais;
+  
+ 
+  if (n1 <= n2 && n1 <= n3)
+  {
+    mazakais = n1;
+    
+    
+    if (n2 <= n3)
+    {
+      videjais = n2;
+      lielakais = n3;
+    }
+    else
+    {
+      videjais = n3;
+      lielakais = n2;
+    }
+  }
+  
+  else if (n2 <= n1 && n2 <= n3)
+  {
+    mazakais = n2;
+    
+    
+    if (n1 <= n3)
+    {
+      videjais = n1;
+      lielakais = n3;
+    }
+    else
+    {
+      videjais = n3;
+      lielakais = n1;
+    }
+  }
+  
+  else
+  {
+    mazakais = n3;
+    
+
+    if (n1 <= n2)
+    {
+      videjais = n1;
+      lielakais = n2;
+    }
+    else
+    {
+      videjais = n2;
+      lielakais = n1;
+    }
+  }
+  
+  printf("\n\n");
+  
+  
+  printf("augoša secība: %d %d %d\n\n", mazakais, videjais, lielakais);
+  printf("dilstoša secība: %d %d %d\n\n", lielakais, videjais, mazakais);
+  
+  return 0;
+}
