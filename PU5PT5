@@ -1,0 +1,77 @@
+#define val_def_size 16
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+char type;
+
+char add_fact(void *val, int i)
+{
+    char cmp_res;
+
+    if (type == 'c')
+    {
+        char val_before = *((char *)val);
+        *((char *)val) *= i;
+        cmp_res = *((char *)val) > val_before;
+    }
+    else if (type == 'i')
+    {
+        int val_before = *((int *)val);
+        *((int *)val) *= i;
+        cmp_res = *((int *)val) > val_before;
+    }
+    else
+    {
+        long long val_before = *((long long *)val);
+        *((long long *)val) *= i;
+        cmp_res = *((long long *)val) > val_before;
+    }
+    
+    return cmp_res;
+}
+
+int main()
+{
+    int d;
+    printf("ievadiet ciparu: ");
+    scanf(" %d", &d);
+
+    printf("izvelaties attelosanas veidu (long = l, int = i, char = c): ");
+    scanf(" %c", &type);
+
+    if (type != 'c' && type != 'i' && type != 'l')
+    {
+        printf("Invalid data type!\n");
+        return 1;
+    }
+
+    char my_val[val_def_size];
+    memset(my_val, 0, val_def_size);
+    my_val[0] = 1;
+    char last_res;
+
+    for (int i = 2; i <= d; i++)
+    {
+        last_res = add_fact(my_val, i);
+        if (!last_res)
+            break;
+    }
+
+   
+
+    switch (type)
+    {
+        case 'c':
+            printf("Res: %d\n", *((char *)my_val));
+            break;
+        case 'i':
+            printf("Res: %d\n", *((int *)my_val));
+            break;
+        case 'l':
+            printf("Res: %lld\n", *((long long *)my_val));
+            break;
+    }
+
+    return 0;
+}
